@@ -1,0 +1,48 @@
+plugin.tx_fkulibrary {
+	view {
+		templateRootPath = {$plugin.tx_fkulibrary.view.templateRootPath}
+		partialRootPath = {$plugin.tx_fkulibrary.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_fkulibrary.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_fkulibrary.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		resultsPerPage = {$plugin.tx_fkulibrary.settings.resultsPerPage}
+		newMonths = {$plugin.tx_fkulibrary.settings.newMonths}
+		excelPageType = {$plugin.tx_fkulibrary.settings.excelPageType}
+		exportSeparator = {$plugin.tx_fkulibrary.settings.exportSeparator}
+		requireSearchword = {$plugin.tx_fkulibrary.settings.requireSearchword}
+		pidNormal = {$plugin.tx_fkulibrary.settings.pidNormal}
+		pidAdmin = {$plugin.tx_fkulibrary.settings.pidAdmin}
+		checkRegisterid = {$plugin.tx_fkulibrary.settings.checkRegisterid}
+		checkTitle = {$plugin.tx_fkulibrary.settings.checkTitle}
+		checkTitlePercent = {$plugin.tx_fkulibrary.settings.checkTitlePercent}
+		checkAuthorPercent = {$plugin.tx_fkulibrary.settings.checkAuthorPercent}
+		checkPublisherPercent = {$plugin.tx_fkulibrary.settings.checkPublisherPercent}
+	}
+}
+
+page_libaray_excel = PAGE
+page_libaray_excel {
+  typeNum = {$plugin.tx_fkulibrary.settings.excelPageType}
+  10 = USER
+  10 {
+    vendorName = FKU
+    extensionName = FkuLibrary
+    pluginName = Library
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+  }
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders.10.header = Content-type:text/csv
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+  }
+}

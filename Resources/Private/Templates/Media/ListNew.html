@@ -1,0 +1,37 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<div class="d-none d-sm-block float-right">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Liste neuer Bücher</h2>
+
+<div class="d-block d-sm-none mb-5">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<f:flashMessages as="flashMessages">
+    <f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+<br />
+
+<f:if condition="{medias->f:count()}>0">
+	<f:then>
+        <f:link.action action="export" arguments="{newflag:1}" pageType="{exportPageType}">
+            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-400-export.svg#glyphicons-basic"/></svg>
+            Liste in Excel exportieren
+        </f:link.action>
+		&nbsp; &nbsp; &nbsp;
+		<f:link.action action="removeNewFlag" additionalAttributes="{onclick: 
+		'return confirm(\'Sollen wirklich alle Markierungen neuer Bücher (Etiketten-Symbol) gelöscht werden? Dieser Schritt lässt sich nicht rückgängig machen.\')'}">
+        	Alle <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-66-tag.svg#glyphicons-basic"/></svg>-Markierungen entfernen</f:link.action>
+		<f:render partial="Media/Table" arguments="{medias:medias}" />
+	</f:then>
+	<f:else>
+		<div class="alert alert-info" role="alert">Keine Einträge gefunden</div>
+	</f:else>
+</f:if>
+
+</f:section>

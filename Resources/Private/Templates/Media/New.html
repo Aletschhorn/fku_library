@@ -1,0 +1,23 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1>Bibliothek</h1>
+<h2>Admin: Neues Buch hinzufügen</h2>
+
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+
+<f:render partial="FormErrors" arguments="{object:Media}" />
+
+<f:form action="create" name="media" object="{media}">
+	<f:render partial="Media/FormFields" arguments="{media:media,categories:categories,newIds:newIds}"/>
+
+	<br clear="all" />
+	<div class="text-right">
+		<input type="button" value="Abbrechen" class="btn btn-outline-dark" onclick="javascript:history.back()" />&nbsp;
+		<f:form.submit value="Speichern" class="btn btn-primary" />
+	</div>
+</f:form>
+
+</f:section>

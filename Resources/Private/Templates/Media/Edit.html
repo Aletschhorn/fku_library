@@ -1,0 +1,28 @@
+
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1>Bibliothek</h1>
+<h2>Admin: Buchangaben ändern</h2>
+
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+
+<f:render partial="FormErrors" arguments="{object:Media}" />
+
+<f:form action="update" name="media" object="{media}" >
+	<f:form.hidden name="confirmation" value="{confirmation}" />
+	<f:render partial="Media/FormFields" arguments="{media:media,categories:categories,newIds:newIds}" />
+
+	<div class="text-right">
+		<f:link.action action="delete" arguments="{media:media}" class="btn btn-danger" additionalAttributes="{onclick: 
+	'return confirm(\'Soll dieses Buch wirklich gelöscht werden?\')'}">Buch löschen</f:link.action>&nbsp;
+    	<f:if condition="{confirmation}==0">
+			<input type="button" value="Abbrechen" class="btn btn-outline-dark" onclick="javascript:history.back()" />&nbsp;
+		</f:if>
+        <input type="reset" value="Zurücksetzen" class="btn btn-outline-dark" />&nbsp;
+		<f:form.submit value="Speichern" class="btn btn-primary" />
+	</div>
+</f:form>
+</f:section>

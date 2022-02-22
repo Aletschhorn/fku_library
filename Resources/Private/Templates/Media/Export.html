@@ -1,0 +1,9 @@
+{namespace lib=FKU\FkuLibrary\ViewHelpers}
+<f:layout name="Empty" />
+<f:section name="main">Buch-Nr.{separator}Titel{separator}Autor{separator}Verlag{separator}ISBN{separator}Kategorie{separator}Stichworte{separator}Empfohlen{separator}Fehlt{separator}Temporaer
+<f:for each="{medias}" as="media">{media.registerId}{separator}"{media.title->lib:htmlDecode()}"{separator}"{media.author->lib:htmlDecode()}"{separator}"{media.publisher->lib:htmlDecode()}"{separator}{media.isbn}{separator}"{media.category.title->lib:htmlDecode()}"{separator}"{media.keywords->lib:htmlDecode()}"{separator}<f:if condition="{media.recommended}">X</f:if>{separator}<f:if condition="{media.missing}">X</f:if>{separator}<f:if condition="{media.temporary}">X</f:if>
+</f:for></f:section>
+
+<f:section name="main_old">{bom}<lib:encoding from="UTF-8" to="UTF-16">Buch-Nr.{separator}Titel{separator}Autor{separator}Verlag{separator}ISBN{separator}Kategorie{separator}Stichworte{separator}Empfohlen{separator}Fehlt
+<f:for each="{medias}" as="media">{media.registerId}{separator}"{media.title->lib:htmlDecode()}"{separator}"{media.author->lib:htmlDecode()}"{separator}"{media.publisher->lib:htmlDecode()}"{separator}{media.isbn}{separator}"{media.category.title->lib:htmlDecode()}"{separator}"{media.keywords->lib:htmlDecode()}"{separator}<f:if condition="{media.recommended}">X</f:if>{separator}<f:if condition="{media.missing}">X</f:if>
+</f:for></lib:encoding></f:section>

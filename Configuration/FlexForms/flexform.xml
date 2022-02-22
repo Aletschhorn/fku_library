@@ -1,0 +1,61 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Mode</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="1" type="array">
+										<numIndex index="0">Complete library</numIndex>
+										<numIndex index="1">Media->search</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">Last added media</numIndex>
+										<numIndex index="1">Media->listLastAdded</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">Library administration</numIndex>
+										<numIndex index="1">Media->searchAdmin;Media->listNew;Media->listMissing;Media->list;Media->export;Media->edit;Media->new;Media->create;Media->delete;Media->update;Media->removeNewFlag;Media->test;Media->idCheck;Media->listTemporary</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.inclmissing>
+						<TCEforms>
+							<label>Show missing media in search results</label>
+							<displayCond>FIELD:switchableControllerActions:=:Media->searchAdmin;Media->listNew;Media->listMissing;Media->list;Media->export;Media->edit;Media->new;Media->create;Media->delete;Media->update;Media->removeNewFlag;Media->test;Media->idCheck;Media->listTemporary</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.inclmissing>
+					<settings.limitation>
+						<TCEforms>
+							<label>Number of media to be shown</label>
+							<displayCond>FIELD:switchableControllerActions:=:Media->listLastAdded</displayCond>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</settings.limitation>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

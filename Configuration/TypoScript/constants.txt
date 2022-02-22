@@ -1,0 +1,40 @@
+plugin.tx_fkulibrary {
+	view {
+		# cat=plugin.tx_fkulibrary/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:fku_library/Resources/Private/Templates/
+		# cat=plugin.tx_fkulibrary/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:fku_library/Resources/Private/Partials/
+		# cat=plugin.tx_fkulibrary/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:fku_library/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_fkulibrary//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		# cat=plugin.tx_fkulibrary/others/a; type=int+; label=Results per page
+		resultsPerPage = 10
+		# cat=plugin.tx_fkulibrary/others/b; type=int+; label=Number of months a book is marked new
+		newMonths = 3
+		# cat=plugin.tx_fkulibrary/others/c; type=int+; label=Page type number for Excel export file
+		excelPageType = 160
+		# cat=plugin.tx_fkulibrary/others/d; type=string; label=Separator for fields in export file, use chr(xx) for special character
+		exportSeparator = ,
+		# cat=plugin.tx_fkulibrary/others/e; type=boolean; label=Show only results if any search term is entered
+		requireSearchword = 0
+		# cat=plugin.tx_fkulibrary/others/k; type=int+; label=Page ID of normal library view
+		pidNormal = 
+		# cat=plugin.tx_fkulibrary/others/k; type=int+; label=Page ID of admin library view
+		pidAdmin = 
+		# cat=plugin.tx_fkulibrary/others/o; type=boolean; label=Check new media for already existing register ID
+		checkRegisterid = 1
+		# cat=plugin.tx_fkulibrary/others/o; type=boolean; label=Check new media for existing ones with similar title
+		checkTitle = 1
+		# cat=plugin.tx_fkulibrary/others/o; type=int+; label=Title check: similarity level in percent (0-100)
+		checkTitlePercent = 90
+		# cat=plugin.tx_fkulibrary/others/p; type=int+; label=Title check: similarity level in percent (0-100)
+		checkAuthorPercent = 85
+		# cat=plugin.tx_fkulibrary/others/q; type=int+; label=Title check: similarity level in percent (0-100)
+		checkPublisherPercent = 85
+	}
+}

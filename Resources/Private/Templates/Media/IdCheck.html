@@ -1,0 +1,43 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="d-none d-sm-block float-right">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Unbenützte Buch-Nummern</h2>
+
+<div class="d-block d-sm-none mb-5">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+        
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+<br />
+
+<table class="table">
+	<tr>
+    	<th>Kategorie</th>
+        <th>Unbenützte Buch-Nummern</th>
+    </tr>
+    <f:for each="{categories}" as="category" key="key">
+    	<tr>
+        	<td>({category.label}) {category.title}</td>
+            <td>
+	            <f:for each="{unused.{category.uid}}" as="id" iteration="it">
+                	<f:if condition="{it.isLast}">
+                    	<f:then>
+                        	ab {id}
+                        </f:then>
+                        <f:else>
+		    	        	{id}, 
+                        </f:else>
+                    </f:if>
+        	    </f:for>
+            </td>
+        </tr>
+    </f:for>
+</table>
+
+</f:section>

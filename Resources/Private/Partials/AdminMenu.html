@@ -1,0 +1,47 @@
+<ul class="nav nav-pills">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-600-menu.svg#glyphicons-basic"/></svg>
+            <b>Admin-Menu</b>
+        </a>
+	    <div class="dropdown-menu">
+        	<f:link.action class="dropdown-item" action="searchAdmin">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-28-search.svg#glyphicons-basic"/></svg>
+                Suchformular
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="list">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-115-list.svg#glyphicons-basic"/></svg>
+                Gesamtliste
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="listNew">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-66-tag.svg#glyphicons-basic"/></svg>
+                Liste neuer Bücher
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="listMissing">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-632-circle-minus.svg#glyphicons-basic"/></svg>
+                Liste vermisster Bücher
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="listTemporary">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-55-clock.svg#glyphicons-basic"/></svg>
+                Liste temporärer Bücher
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="new">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-371-plus.svg#glyphicons-basic"/></svg>
+                Buch hinzufügen
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="test">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-663-equalizer-dots.svg#glyphicons-basic"/></svg>
+                Einträge prüfen
+            </f:link.action>
+            <f:link.action class="dropdown-item" action="idCheck">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-740-hash.svg#glyphicons-basic"/></svg>
+            	<span class="halflings halflings-hash"></span>
+                Unbenützte Buch-Nummern
+            </f:link.action>
+            <f:link.page class="dropdown-item" pageUid="{settings.pidNormal}">
+            	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-53-eye-off.svg#glyphicons-basic"/></svg>
+                Normal-Ansicht
+            </f:link.page>
+        </div>
+	</li>
+</ul>

@@ -1,0 +1,51 @@
+<table class="table table-sm">
+	<thead>
+        <tr>
+            <th><nobr>Buch-Nr.</nobr></th>
+            <th>Titel</th>
+            <th>Autor</th>
+            <th>Verlag</th>
+            <th>Stichworte</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <f:for each="{medias}" as="media">
+            <tr>
+                <td>{media.registerId}</td>
+                <td>{media.title}</td>
+                <td>{media.author}</td>
+                <td>{media.publisher}</td>
+                <td>{media.keywords}</td>
+                
+                <td class="text-right">
+                    <nobr>
+                        <f:if condition="{media.recommended}">
+                            <span title="empfohlenes Buch">
+                                <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-13-heart.svg#glyphicons-basic"/></svg>
+                            </span>
+                        </f:if>
+                        <f:if condition="{media.newflag}">
+                            <span title="als neu markiert">
+                                <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-66-tag.svg#glyphicons-basic"/></svg>
+                            </span>
+                        </f:if>
+                        <f:if condition="{media.missing}">
+                            <span title="wird vermisst">
+                                <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-632-circle-minus.svg#glyphicons-basic"/></svg>
+                            </span>
+                        </f:if>
+                        <f:if condition="{media.rejected}">
+                            <span title="aussortiert">
+                                <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-633-circle-remove.svg#glyphicons-basic"/></svg>
+                            </span>
+                        </f:if>
+                        <f:link.action action="edit" arguments="{media:media}" additionalAttributes="{title:'Buch editieren'}">
+                            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-31-pencil.svg#glyphicons-basic"/></svg>
+                        </f:link.action>
+                    </nobr>
+                </td>
+            </tr>
+        </f:for>
+    </tbody>
+</table>

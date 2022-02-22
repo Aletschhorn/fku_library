@@ -1,0 +1,86 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<f:security.ifHasRole role="Bibliothek">
+    <div class="d-none d-sm-block float-right">
+        <f:link.page pageUid="{settings.pidAdmin}">
+            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-52-eye.svg#glyphicons-basic"/></svg>
+            Admin-Ansicht
+        </f:link.page>
+    </div>
+</f:security.ifHasRole>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Bibliothek durchsuchen</h2>
+
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+
+<f:form name="filter" action="search" class="mt-3">
+	<f:render partial="Media/SearchForm" arguments="{filter:filter,fields:fields,categories:categories}" />
+</f:form>
+<br />
+
+<f:if condition="{medias}">
+	<f:then>
+		<h3>Suchresultat: <f:if condition="{total}==1"><f:then>1 Eintrag</f:then><f:else>{total} Einträge</f:else></f:if></h3>
+		<f:if condition="{page.total}>1">
+			<nav>
+				<ul class="pagination">
+					<f:if condition="{page.now}>1">
+						<f:then>
+							<li class="page-item">
+                            	<f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action>
+                            </li>
+						</f:then>
+						<f:else>
+							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action></li>
+						</f:else>
+					</f:if>
+					<f:for each="{pagearray}" as="pageno">
+						<f:if condition="{pageno}=='...'">
+							<f:then>
+								<li class="page-item disabled">
+									<f:link.action action="search" class="page-link" arguments="{page:page.now,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">...</f:link.action>
+								</li>
+							</f:then>
+							<f:else>
+								<f:if condition="{pageno}=={page.now}">
+									<f:then>
+										<li class="page-item active"><a href="#" class="page-link">{pageno} <span class="sr-only">(aktuelle Seite)</span></a></li>
+									</f:then>
+									<f:else>
+										<li class="page-item">
+											<f:link.action action="search" class="page-link" arguments="{page:pageno,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">{pageno}</f:link.action>
+										</li>
+									</f:else>
+								</f:if>
+							</f:else>
+						</f:if>
+					</f:for>
+					<f:if condition="{page.now}<{page.total}">
+						<f:then>
+							<li class="page-item"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+						</f:then>
+						<f:else>
+							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+						</f:else>
+					</f:if>
+				</ul>
+			</nav>
+		</f:if>
+
+		<hr />
+        <f:render partial="Media/ResultList" arguments="{medias:medias}" />
+		<br /><br />
+
+	</f:then>
+	<f:else>
+		<f:if condition="{sent}">
+			<div class="alert alert-info" role="alert">Keine Einträge gefunden</div>
+		</f:if>
+	</f:else>
+</f:if>
+
+</f:section>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-08T13:45:51Z" product-name="fku_library">
+		<header/>
+		<body>
+			<trans-unit id="tx_fkulibrary_domain_model_media">
+				<source>Media</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.register_id">
+				<source>Register Id</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.register_date">
+				<source>Register Date</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.author">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.publisher">
+				<source>Publisher</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.year">
+				<source>Year</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.edition">
+				<source>Edition</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.isbn">
+				<source>ISBN</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.recommended">
+				<source>Recommended</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.newflag">
+				<source>Newflag</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.missing">
+				<source>Missing</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.temporary">
+				<source>Temporary</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.rejected">
+				<source>Rejected</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_media.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_category">
+				<source>Cagegory</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_category.label">
+				<source>Label</source>
+			</trans-unit>
+			<trans-unit id="tx_fkulibrary_domain_model_category.title">
+				<source>Title</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

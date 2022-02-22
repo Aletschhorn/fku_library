@@ -1,0 +1,155 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="d-none d-sm-block float-right">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Bibliothek durchsuchen</h2>
+
+<div class="d-block d-sm-none mb-5">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+<br />
+
+<f:form class="form-horizontal" name="filter" action="searchAdmin">
+	<f:render partial="Media/SearchForm" arguments="{filter:filter,fields:fields,categories:categories}" />   
+</f:form>
+<br />
+
+<f:if condition="{medias}">
+	<f:then>
+		<h3>Suchresultat: <f:if condition="{total}==1"><f:then>1 Eintrag</f:then><f:else>{total} Einträge</f:else></f:if></h3>
+		<f:if condition="{page.total}>1">
+			<nav>
+				<ul class="pagination">
+					<f:if condition="{page.now}>1">
+						<f:then>
+							<li class="page-item">
+                            	<f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action>
+                            </li>
+						</f:then>
+						<f:else>
+							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action></li>
+						</f:else>
+					</f:if>
+					<f:for each="{pagearray}" as="pageno">
+						<f:if condition="{pageno}=='...'">
+							<f:then>
+								<li class="page-item disabled">
+									<f:link.action action="search" class="page-link" arguments="{page:page.now,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">...</f:link.action>
+								</li>
+							</f:then>
+							<f:else>
+								<f:if condition="{pageno}=={page.now}">
+									<f:then>
+										<li class="page-item active"><a href="#" class="page-link">{pageno} <span class="sr-only">(aktuelle Seite)</span></a></li>
+									</f:then>
+									<f:else>
+										<li class="page-item">
+											<f:link.action action="search" class="page-link" arguments="{page:pageno,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">{pageno}</f:link.action>
+										</li>
+									</f:else>
+								</f:if>
+							</f:else>
+						</f:if>
+					</f:for>
+					<f:if condition="{page.now}<{page.total}">
+						<f:then>
+							<li class="page-item"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+						</f:then>
+						<f:else>
+							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+						</f:else>
+					</f:if>
+				</ul>
+			</nav>
+		</f:if>
+
+		<hr />
+        <f:render partial="Media/ResultList" arguments="{medias:medias}" />
+		<br /><br />
+
+<f:comment>
+		<table class="table">
+			<f:for each="{medias}" as="media">
+				<tr>
+					<td>
+						<table width="100%">
+							<tr>
+								<td colspan="2">
+									<h4>
+										<f:if condition="{media.missing}">
+											<f:then>
+												<strike>{media.title}</strike>
+											</f:then>
+											<f:else>
+												{media.title}
+											</f:else>
+										</f:if>
+									</h4>
+								</td>
+								<td class="text-right">
+                                    <f:if condition="{media.recommended}">
+                                        <span title="Empfohlenes Buch">
+                                            <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-13-heart.svg#glyphicons-basic"/></svg>
+                                        </span>
+                                    </f:if>
+                                    <f:if condition="{media.registerDate}>{newLimit}">
+                                        <span title="Neu in der Bibliothek">
+                                            <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-610-star-of-life.svg#glyphicons-basic"/></svg>
+                                        </span>
+                                    </f:if>
+                                    <f:if condition="{media.missing}">
+                                        <span title="Wird vermisst">
+                                            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-632-circle-minus.svg#glyphicons-basic"/></svg>
+                                        </span>
+                                    </f:if>
+									<f:security.ifHasRole role="Bibliothek">
+                                        <f:link.action action="edit" arguments="{media:media}" pageUid="{settings.pidAdmin}" additionalAttributes="{title:'Buch editieren'}">
+                                            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-31-pencil.svg#glyphicons-basic"/></svg>
+                                        </f:link.action>
+									</f:security.ifHasRole>
+								</td>
+							</tr>
+							<tr>
+								<td width="40%">{media.author}</td>
+								<td width="40%">{media.category.labeltitle}</td>
+								<td width="20%" style="text-align:right">{media.registerId}</td>
+							</tr>
+							<tr>
+								<td>
+									{media.publisher}
+								</td>
+								<td colspan="2">
+									<f:if condition="{media.keywords}">Stichworte: {media.keywords}</f:if>
+								</td>
+                                <f:if condition="{media.rejected}">
+                                    <tr>
+                                    	<svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-633-circle-remove.svg#glyphicons-basic"/></svg>
+                                        <i>Dieses Buch ist aussortiert worden und kann kostenlos mitgenommen werden.</i>
+                                    </tr>
+                                </f:if>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</f:for>
+		</table>
+</f:comment>
+		<br /><br />
+
+	</f:then>
+	<f:else>
+		<f:if condition="{sent}">
+			<div class="alert alert-info" role="alert">Keine Einträge gefunden</div>
+		</f:if>
+	</f:else>
+</f:if>
+
+</f:section>

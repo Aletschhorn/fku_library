@@ -1,0 +1,20 @@
+<f:layout name="Default" />
+<f:section name="main">
+
+<f:if condition="{medias}">
+	<f:then>
+		<f:for each="{medias}" as="media">
+			<p>
+				<b>{media.title}</b>
+				<f:if condition="{media.author}">
+					<br />von {media.author}
+				</f:if>
+			</p>
+		</f:for>
+	</f:then>
+	<f:else>
+		<p>Keine neuen Büchern in den letzten Monaten</p>
+	</f:else>
+</f:if>
+
+</f:section>

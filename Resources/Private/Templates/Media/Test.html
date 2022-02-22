@@ -1,0 +1,113 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<div class="d-none d-sm-block float-right">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Einträge prüfen</h2>
+
+<div class="d-block d-sm-none mb-5">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+        
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+<br />
+
+Neue Prüfung starten:  &nbsp;
+<f:for each="{testingSelection}" as="item" key="key">
+	<f:if condition="{key}>0">
+    	<f:if condition="{item.0}">
+        	<f:then>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {item.0}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <f:for each="{item}" as="subitem" key="subkey">
+                            <f:if condition="{subkey}>0">
+                                <f:link.action action="test" arguments="{testing:key,param:subkey}" class="dropdown-item choose">{subitem}</f:link.action>
+                            </f:if>
+                        </f:for>
+                    </ul>
+                </div> &nbsp;
+            </f:then>
+            <f:else>
+				<f:link.action action="test" arguments="{testing:key}" class="btn btn-outline-dark choose">{item}</f:link.action> &nbsp;
+            </f:else>
+        </f:if>
+	</f:if>
+</f:for>
+<span class="d-none" id="spinner"><f:image src="EXT:fku_library/Resources/Public/Icons/spinner.gif" /></span>
+<script language="javascript">
+$('.choose').click(function() {
+	document.getElementById('spinner').className = 'd-inline';
+});
+</script>
+
+<br /><br />
+
+<f:if condition="{testing}==0">
+	<f:then>
+    	<br />
+    	<p>Eine der Schaltflächen oben klicken, um die entsprechende Prüfung zu starten.</p>
+        <p>Achtung: Die Prüfung kann mehrere Minuten dauern.</p>
+        <br /><br /><br /><br /><br />
+    </f:then>
+    <f:else>
+        <f:switch expression="{testing}">
+            <f:case value="1">
+                <h3>Resultat: {issues->f:count()} gleiche Buch-Nummern gefunden</h3>
+            </f:case>
+            <f:case value="2">
+            	<f:if condition="{param}==1">
+                	<f:then>
+		                <h3>Resultat: {issues->f:count()} ähnliche Buch-Titel gefunden (inkl. Buchreihen)</h3>
+                    </f:then>
+                    <f:else>
+		                <h3>Resultat: {issues->f:count()} ähnliche Buch-Titel gefunden (exkl. Buchreihen)</h3>
+                    </f:else>
+                </f:if>
+            </f:case>
+            <f:case value="3">
+                <h3>Resultat: {issues->f:count()} minimal abweichende Autoren gefunden</h3>
+            </f:case>
+            <f:case value="4">
+                <h3>Resultat: {issues->f:count()} minimal abweichende Verlage gefunden</h3>
+            </f:case>
+        </f:switch>
+        <f:if condition="{issues->f:count()} > 0">
+            <table class="table">
+                <tr>
+                    <th>Buch 1</th>
+                    <th>Buch 2</th>
+                    <th class="text-right">Übereinstimmung</th>
+                </tr>
+                <f:for each="{issues}" as="issue">
+                    <tr>
+                        <td>
+                            <f:link.action action="edit" arguments="{media:issue.0}">{issue.0.registerId}</f:link.action><br />
+                            {issue.0.title}<br />
+                            {issue.0.author}<br />
+                            {issue.0.publisher}
+                        </td>
+                        <td>
+                            <f:link.action action="edit" arguments="{media:issue.1}">{issue.1.registerId}</f:link.action><br />
+                            {issue.1.title}<br />
+                            {issue.1.author}<br />
+                            {issue.1.publisher}
+                        </td>
+                        <td class="text-right">
+                        	 <f:format.number decimals="1">{issue.2}</f:format.number>%
+                        </td>
+                    </tr>
+                </f:for>
+            </table>
+        </f:if>
+    </f:else>
+</f:if>
+
+</f:section>

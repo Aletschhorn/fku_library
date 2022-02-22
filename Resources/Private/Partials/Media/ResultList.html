@@ -1,0 +1,60 @@
+<f:for each="{medias}" as="media">
+    <div class="row">
+        <div class="col-10">
+            <h4>
+                <f:if condition="{media.missing}">
+                    <f:then>
+                        <strike>{media.title}</strike>
+                    </f:then>
+                    <f:else>
+                        {media.title}
+                    </f:else>
+                </f:if>
+            </h4>
+        </div>
+        <div class="col-2 text-right">
+            <f:if condition="{media.recommended}">
+                <span title="Empfohlenes Buch">
+                    <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-13-heart.svg#glyphicons-basic"/></svg>
+                </span>
+            </f:if>
+            <f:if condition="{media.registerDate}>{newLimit}">
+                <span title="Neu in der Bibliothek">
+                    <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-610-star-of-life.svg#glyphicons-basic"/></svg>
+                </span>
+            </f:if>
+            <f:if condition="{media.missing}">
+                <span title="Wird vermisst">
+                    <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-632-circle-minus.svg#glyphicons-basic"/></svg>
+                </span>
+            </f:if>
+            <f:security.ifHasRole role="Bibliothek">
+                <f:link.action action="edit" arguments="{media:media}" pageUid="{settings.pidAdmin}" additionalAttributes="{title:'Buch editieren'}">
+                    <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-31-pencil.svg#glyphicons-basic"/></svg>
+                </f:link.action>
+            </f:security.ifHasRole>
+        </div>
+        <div class="col-5">
+            {media.author}
+        </div>
+        <div class="col-5">
+            {media.category.labeltitle}
+        </div>
+        <div class="col-2 text-right">
+            {media.registerId}
+        </div>
+        <div class="col-5">
+            {media.publisher}
+        </div>
+        <div class="col-7">
+            <f:if condition="{media.keywords}">Stichworte: {media.keywords}</f:if>
+        </div>
+        <f:if condition="{media.rejected}">
+            <div class="col-12">
+                <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-633-circle-remove.svg#glyphicons-basic"/></svg>
+                <i>Dieses Buch ist aussortiert worden und kann kostenlos mitgenommen werden.</i>
+            </div>
+        </f:if>
+    </div>
+    <hr />
+</f:for>

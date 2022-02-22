@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-08T13:45:51Z" product-name="fku_library">
+		<header/>
+		<body>
+			<trans-unit id="register_id.description">
+				<source>registerId</source>
+			</trans-unit>
+			<trans-unit id="register_date.description">
+				<source>registerDate</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="author.description">
+				<source>author</source>
+			</trans-unit>
+			<trans-unit id="publisher.description">
+				<source>publisher</source>
+			</trans-unit>
+			<trans-unit id="year.description">
+				<source>year</source>
+			</trans-unit>
+			<trans-unit id="edition.description">
+				<source>edition</source>
+			</trans-unit>
+			<trans-unit id="keywords.description">
+				<source>keywords</source>
+			</trans-unit>
+			<trans-unit id="isbn.description">
+				<source>isbn</source>
+			</trans-unit>
+			<trans-unit id="recommended.description">
+				<source>recommended</source>
+			</trans-unit>
+			<trans-unit id="newflag.description">
+				<source>newflag</source>
+			</trans-unit>
+			<trans-unit id="missing.description">
+				<source>missing</source>
+			</trans-unit>
+			<trans-unit id="temporary.description">
+				<source>temporary</source>
+			</trans-unit>
+			<trans-unit id="rejected.description">
+				<source>rejected</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>category</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

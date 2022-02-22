@@ -1,0 +1,44 @@
+<f:layout name="Default" />
+<f:section name="main">
+<div class="d-none d-sm-block float-right">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+
+<h1>Bibliothek-Admin</h1>
+<h2>Bücher pro Kategorie auflisten</h2>
+
+<div class="d-block d-sm-none mb-5">
+    <f:render partial="AdminMenu" arguments="{settings:settings}" />
+</div>
+        
+<f:flashMessages as="flashMessages">
+	<f:render partial="Alert" arguments="{flashMessages:flashMessages}" />
+</f:flashMessages>
+<br />
+        
+<f:form class="form-inline" name="filter" action="list">
+    <f:form.hidden name="sent" value="1" />
+    <div class="form-group">
+        <label for="category" class="mr-2">Kategorie:</label>
+        <f:form.select name="category" value="{category}" class="form-control" options="{categories}" optionLabelField="labeltitle" optionValueField="uid" prependOptionLabel="Alle Kategorien" />
+    </div>
+    &nbsp; <f:form.submit value="Zeigen" class="btn btn-primary" />
+</f:form>
+<br />
+
+<f:if condition="{medias}">
+    <f:then>
+        <f:link.action action="export" arguments="{category:category}" pageType="{exportPageType}">
+            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-400-export.svg#glyphicons-basic"/></svg>
+            Liste in Excel exportieren
+        </f:link.action>
+        <f:render partial="Media/Table" arguments="{medias:medias}" />
+    </f:then>
+    <f:else>
+        <f:if condition="{sent}">
+            <div class="alert alert-info" role="alert">Keine Einträge gefunden</div>
+        </f:if>
+    </f:else>
+</f:if>
+
+</f:section>

@@ -1,0 +1,33 @@
+
+<table width="100%">
+	<tr>
+		<td>{media.author}</td>
+		<td>{media.publisher}</td>
+		<td>Ausgabe: {media.edition}</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<h4>{media.title}</h4>
+		</td>
+	</tr>
+	<f:if condition="{media.keywords}">
+		<tr>
+			<td colspan="3">
+				Stichworte: {media.keywords}
+			</td>
+		</tr>
+	</f:if>
+	<tr>
+		<td>
+			Kategorie: {media.category.title}
+		</td>
+		<td>
+			Nummer: {media.registerId}
+		</td>
+		<td>
+			<f:if condition="{media.recommended}">
+				<span class="halflings halflings-heart"></span> Empfohlen
+			</f:if>
+		</td>
+	</tr>
+</table>

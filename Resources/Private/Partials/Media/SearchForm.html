@@ -1,0 +1,90 @@
+<f:form.hidden name="sent" value="1" />
+<div class="row">
+    <div class="col-sm-6 col-12">
+        <div class="row form-group">
+            <label for="searchword" class="col-sm-4 col-form-label">Suchbegriff</label>
+            <div class="col-sm-8">
+                <f:form.textfield name="searchword" value="{filter.searchword}" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-12">
+        <div class="row form-group">
+            <label for="category" class="col-sm-4 col-form-label">Suchen in</label>
+            <div class="col-sm-8">
+                <f:form.select name="field" value="{filter.field}" class="form-control" options="{fields}" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-12">
+        <div class="row form-group">
+            <legend class="col-form-label col-4 float-left pt-0">Sortierung</legend>
+            <div class="col-8">
+                <div class="form-check">
+                	<f:form.radio name="sorting" id="sorting1" checked="{filter.sorting}=='title'" value="title" class="form-check-input" />
+                    <label for="sorting1" class="form-check-label">nach Titel</label>
+                </div>
+                <div class="form-check">
+                	<f:form.radio name="sorting" id="sorting2" checked="{filter.sorting}=='author'" value="author" class="form-check-input" />
+                    <label for="sorting2" class="form-check-label">nach Autor</label>
+                </div>
+                <div class="form-check">
+                	<f:form.radio name="sorting" id="sorting3" checked="{filter.sorting}=='registerId'" value="registerId" class="form-check-input" />
+                    <label for="sorting3" class="form-check-label">nach Kategorie / Buchnummer</label>
+                </div>
+                <div class="form-check">
+                	<f:form.radio name="sorting" id="sorting4" checked="{filter.sorting}=='publisher'" value="publisher" class="form-check-input" />
+                    <label for="sorting4" class="form-check-label">nach Verlag</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-12">
+        <div class="row form-group">
+            <label for="category" class="col-sm-4 col-form-label">Kategorie</label>
+            <div class="col-sm-8">
+                <f:form.select name="category" value="{filter.category}" class="form-control" options="{categories}" optionLabelField="labeltitle" optionValueField="uid" prependOptionLabel="Alle" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <legend class="col-form-label col-4 float-left pt-0">Optionen</legend>
+            <div class="col-8">
+                <div class="form-check">
+                	<f:form.checkbox name="limit_recommended" checked="{filter.limit_recommended}==1" value="1" class="form-check-input" />
+                    <label for="limit_recommended" class="form-check-label">
+                    	Nur empfohlene Literatur
+                        <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-13-heart.svg#glyphicons-basic"/></svg>
+                    </label>
+                </div>
+                <div class="form-check">
+                	<f:form.checkbox name="limit_new" checked="{filter.limit_new}==1" value="1" class="form-check-input" />
+                    <label for="limit_new" class="form-check-label">
+                    	Nur neue Bücher / Medien
+                        <svg class="icon-md" width="32" height="32" fill="#D07601"><use xlink:href="fileadmin/icon/glyphicons-basic-610-star-of-life.svg#glyphicons-basic"/></svg>
+                    </label>
+                </div>
+                <f:security.ifHasRole role="Bibliothek">
+                    <div class="form-check">
+                        <f:form.checkbox name="incl_missing" checked="{filter.incl_missing}==1" value="1" class="form-check-input" />
+                        <label for="incl_missing" class="form-check-label">
+                            Inklusive vermisste
+                            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-632-circle-minus.svg#glyphicons-basic"/></svg>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <f:form.checkbox name="incl_temporary" checked="{filter.incl_temporary}==1" value="1" class="form-check-input" />
+                        <label for="incl_temporary" class="form-check-label">
+                            Inklusive temporäre
+                            <svg class="icon-md" width="32" height="32" fill="currentColor"><use xlink:href="fileadmin/icon/glyphicons-basic-55-clock.svg#glyphicons-basic"/></svg>
+                        </label>
+                    </div>
+                </f:security.ifHasRole>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <f:form.submit value="Suchen" class="btn btn-primary" />
+</div>
