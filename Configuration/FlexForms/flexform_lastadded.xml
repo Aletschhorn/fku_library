@@ -1,0 +1,27 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.limitation>
+						<TCEforms>
+							<label>Number of media to be shown</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</settings.limitation>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

@@ -1,0 +1,25 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.inclmissing>
+						<TCEforms>
+							<label>Show missing media in search results</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.inclmissing>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

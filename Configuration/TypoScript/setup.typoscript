@@ -34,7 +34,7 @@ page_libaray_excel {
   10 {
     vendorName = FKU
     extensionName = FkuLibrary
-    pluginName = Library
+    pluginName = Admin
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
   }
   config {
