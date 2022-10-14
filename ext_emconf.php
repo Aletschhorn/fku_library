@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = [
 	'author_email' => 'daniel.widmer@fku.ch',
 	'state' => 'stable',
 	'clearCacheOnLoad' => 0,
-	'version' => '3.0.2',
+	'version' => '3.1.0',
 	'constraints' => [
 		'depends' => [
 			'typo3' => '7.6.0 - 10.4.99',
@@ -121,5 +121,10 @@ $EM_CONF[$_EXTKEY] = [
  * Changed name of pageType for Excel export and added commented content (10)
  * New partial Media/SerachForm.html used for Search and AdminSearch
  * Made actions SearchAdmin and New non-cacheable
+ *
+ * Version 3.1.0
+ * -------------                    
+ * Get rid of swtichable actions in flexform
+ * Use extension .typoscript for TypoScript files
  *
 **/
