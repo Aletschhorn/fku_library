@@ -31,18 +31,18 @@
 					<f:if condition="{page.now}>1">
 						<f:then>
 							<li class="page-item">
-                            	<f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action>
+                            	<f:link.action action="searchAdmin" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action>
                             </li>
 						</f:then>
 						<f:else>
-							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action></li>
+							<li class="page-item disabled"><f:link.action action="searchAdmin" class="page-link" arguments="{page:page.prev,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&laquo;</f:link.action></li>
 						</f:else>
 					</f:if>
 					<f:for each="{pagearray}" as="pageno">
 						<f:if condition="{pageno}=='...'">
 							<f:then>
 								<li class="page-item disabled">
-									<f:link.action action="search" class="page-link" arguments="{page:page.now,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">...</f:link.action>
+									<f:link.action action="searchAdmin" class="page-link" arguments="{page:page.now,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">...</f:link.action>
 								</li>
 							</f:then>
 							<f:else>
@@ -52,7 +52,7 @@
 									</f:then>
 									<f:else>
 										<li class="page-item">
-											<f:link.action action="search" class="page-link" arguments="{page:pageno,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">{pageno}</f:link.action>
+											<f:link.action action="searchAdmin" class="page-link" arguments="{page:pageno,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">{pageno}</f:link.action>
 										</li>
 									</f:else>
 								</f:if>
@@ -61,10 +61,10 @@
 					</f:for>
 					<f:if condition="{page.now}<{page.total}">
 						<f:then>
-							<li class="page-item"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+							<li class="page-item"><f:link.action action="searchAdmin" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
 						</f:then>
 						<f:else>
-							<li class="page-item disabled"><f:link.action action="search" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
+							<li class="page-item disabled"><f:link.action action="searchAdmin" class="page-link" arguments="{page:page.next,searchword:filter.searchword,category:filter.category,limit_recommended:filter.limit_recommended,limit_new:filter.limit_new,sorting:filter.sorting}">&raquo;</f:link.action></li>
 						</f:else>
 					</f:if>
 				</ul>
