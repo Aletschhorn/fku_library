@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = [
 	'author_email' => 'daniel.widmer@fku.ch',
 	'state' => 'stable',
 	'clearCacheOnLoad' => 0,
-	'version' => '3.1.0',
+	'version' => '3.1.1',
 	'constraints' => [
 		'depends' => [
 			'typo3' => '7.6.0 - 10.4.99',
@@ -126,5 +126,9 @@ $EM_CONF[$_EXTKEY] = [
  * -------------                    
  * Get rid of swtichable actions in flexform
  * Use extension .typoscript for TypoScript files
+ *
+ * Version 3.1.1
+ * -------------                    
+ * Correction of pagination links in template SearchAdmin.html
  *
 **/
